@@ -16,3 +16,5 @@ clean-targets:
 
 models:
   transform:
+    staging:
+      +materialized: view
