@@ -34,3 +34,9 @@ Run the following command to build the models:
 dbt build --project-dir transform --profiles-dir transform
 ```
 
+## Resources
+* Official `postgres_fdw` docs: https://www.postgresql.org/docs/current/postgres-fdw.html
+* Detailed `postgres_fdw` tutorial: https://www.percona.com/blog/foreign-data-wrappers-in-postgresql-databases-postgres_fdw-dblink/
+* Discussion on dbt and FDW: https://github.com/dbt-labs/dbt-core/issues/2182
+* FDW performance tuning: https://www.crunchydata.com/blog/performance-tips-for-postgres-fdw
+
