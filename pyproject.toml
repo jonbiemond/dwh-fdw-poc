@@ -1,0 +1,10 @@
+[project]
+name = "dwh-fdw-poc"
+version = "0.1.0"
+description = "Proof-of-concept connecting a data warehouse to a source db via the Postgres foreign-data wrapper."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dbt-core>=1.9.2",
+    "dbt-postgres>=1.9.0",
+]
