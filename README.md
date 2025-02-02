@@ -17,3 +17,8 @@ The password is "postgres" when prompted.
 ```SQL
 SELECT * FROM app__public.sales LIMIT 10;
 ```
+
+> [!WARNING]
+> Changes to the database and any data is not persisted.
+> When the container is taken down you will lose any data in the database!
+
