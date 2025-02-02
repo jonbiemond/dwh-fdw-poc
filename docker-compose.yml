@@ -1,0 +1,38 @@
+services:
+  application_db:
+    image: postgres
+    container_name: application_db
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: appdb
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres_network
+    volumes:
+      - ./db_init/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d appdb"] 
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  warehouse_db:
+    image: postgres
+    container_name: warehouse_db
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: dwh
+    ports:
+      - "5433:5432"
+    networks:
+      - postgres_network
+    volumes:
+      - ./db_init/fdw.sql:/docker-entrypoint-initdb.d/fdw.sql
+    depends_on:
+      application_db:
+        condition: service_healthy
+
+networks:
+  postgres_network:
+    driver: bridge
